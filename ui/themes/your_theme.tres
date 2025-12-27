@@ -4,7 +4,9 @@
 [ext_resource type="FontFile" uid="uid://buuct0rog8400" path="res://ui/themes/Kario39C3Var-Roman.ttf" id="2_ge066"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ge066"]
+content_margin_left = 6.0
 content_margin_top = 6.0
+content_margin_right = 6.0
 content_margin_bottom = 6.0
 bg_color = Color(0, 0.18310085, 0.0008032782, 1)
 border_width_left = 1
@@ -18,7 +20,9 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2y3n"]
+content_margin_left = 6.0
 content_margin_top = 6.0
+content_margin_right = 6.0
 content_margin_bottom = 6.0
 bg_color = Color(0, 0.18310085, 0.0008032782, 1)
 border_width_left = 1
@@ -32,7 +36,9 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prsbj"]
+content_margin_left = 6.0
 content_margin_top = 6.0
+content_margin_right = 6.0
 content_margin_bottom = 6.0
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1

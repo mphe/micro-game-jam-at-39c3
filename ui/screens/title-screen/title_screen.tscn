@@ -1,14 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddc3qfst7mbgc"]
+[gd_scene load_steps=11 format=3 uid="uid://ddc3qfst7mbgc"]
 
 [ext_resource type="Theme" uid="uid://hheneshfv1b2" path="res://ui/themes/your_theme.tres" id="1_qt2rq"]
 [ext_resource type="Script" uid="uid://1mjt83fygiua" path="res://ui/screens/title-screen/title_screen.gd" id="1_rm86k"]
 
+[sub_resource type="Gradient" id="Gradient_gggwx"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.39772728, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.986252, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xh72y"]
+gradient = SubResource("Gradient_gggwx")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_gggwx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.50000006, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xh72y"]
+curve = SubResource("Curve_gggwx")
+
+[sub_resource type="Gradient" id="Gradient_xh72y"]
+colors = PackedColorArray(0, 0.5083447, 0.006345943, 1, 0.09199957, 0.24053195, 0.34612542, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_587ml"]
+gradient = SubResource("Gradient_xh72y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gggwx"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(578.6, 329.735, 0)
+emission_shape = 3
+emission_box_extents = Vector3(640, 360, 1)
+spread = 180.0
+initial_velocity_min = 53.77
+initial_velocity_max = 180.79
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 6.0
+color_ramp = SubResource("GradientTexture1D_587ml")
+alpha_curve = SubResource("CurveTexture_xh72y")
+turbulence_enabled = true
+
 [sub_resource type="LabelSettings" id="LabelSettings_s0ue6"]
 font_size = 150
 font_color = Color(0, 0.91764706, 0.023529412, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_73xnf"]
-font_size = 50
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -19,6 +56,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qt2rq")
 script = ExtResource("1_rm86k")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1, 0)
+amount = 64
+texture = SubResource("GradientTexture2D_xh72y")
+lifetime = 5.0
+visibility_rect = Rect2(-63.355, -36.5, 1280, 720)
+process_material = SubResource("ParticleProcessMaterial_gggwx")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -43,13 +88,13 @@ label_settings = SubResource("LabelSettings_s0ue6")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(731.345, 0)
+[node name="Label2" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(731.345, 48.01)
 layout_mode = 2
-text = "Godot Micro Game Jam"
-label_settings = SubResource("LabelSettings_73xnf")
+theme_override_font_sizes/normal_font_size = 33
+bbcode_enabled = true
+text = "[color=#468CBF]Godot[/color] Micro Game Jam"
 horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="CenterContainer2" type="CenterContainer" parent="."]
 layout_mode = 1
