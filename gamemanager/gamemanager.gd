@@ -149,10 +149,17 @@ func _return_to_title_screen() -> void:
 	get_tree().paused = false
 	InputManager.set_is_paused(false)
 	InputManager.set_is_in_game(false)
+	%Timer.stop()
 	# Destroy level
 	if current_level_node != null:
 		current_level_node.queue_free()
 		current_level_node = null
+	# Clean up any remaining level nodes
+	for child in get_children():
+		if child is Level:
+			child.queue_free()
+	pause_menu.hide()
+	pause_menu.reset()
 	_show_title_screen()
 #endregion
 
