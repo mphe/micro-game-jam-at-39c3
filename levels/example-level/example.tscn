@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsumwqbyhh2jj"]
+[gd_scene load_steps=6 format=3 uid="uid://bsumwqbyhh2jj"]
 
 [ext_resource type="Script" uid="uid://c5pjtkxt80lgm" path="res://levels/example-level/example.gd" id="1_4xgwq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ujxwy"]
 font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrh33"]
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xgwq"]
 font_color = Color(0.39607844, 1, 0.40784314, 1)
@@ -28,6 +31,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "This is the example Level."
 label_settings = SubResource("LabelSettings_ujxwy")
+horizontal_alignment = 1
+
+[node name="Difficulty" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -104.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "difficulty: $$"
+label_settings = SubResource("LabelSettings_qrh33")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
