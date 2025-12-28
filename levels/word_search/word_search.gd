@@ -30,16 +30,12 @@ func _ready() -> void:
 		mode += 1
 	for i in 4-mode:
 		LETTERS += "_X"
-	var dir_description = randi_range(0, 2*(mode+1)-1)
+	var dir_description = randi_range(0, mode)
 	match dir_description:
 		0: setup_orthogonal(Vector2i.RIGHT, button)
 		1: setup_orthogonal(Vector2i.DOWN, button)
-		# 2: setup_orthogonal(Vector2i.UP, button)
-		# 3: setup_orthogonal(Vector2i.LEFT, button)
 		2: setup_diagonal(DOWN_RIGHT, button)
-		3: setup_diagonal(UP_RIGHT, button)
-		#6: setup_diagonal(DOWN_LEFT, button)
-		#7: setup_diagonal(UP_RIGHT, button)
+		3: setup_diagonal(DOWN_LEFT, button)
 	randomize_unfilled()
 
 

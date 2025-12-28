@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2erwj3nb6wi6"
-path="res://.godot/imported/39c3 micro game jam flyer.svg-8e43c887c338599bf8e0a13c23f2535c.ctex"
+uid="uid://bpoh4i4xunxyg"
+path="res://.godot/imported/39c3 micro game jam flyer for infobeamer.png-edb4da8139acdd15a9ce80d165f53cde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://other/39c3 micro game jam flyer.svg"
-dest_files=["res://.godot/imported/39c3 micro game jam flyer.svg-8e43c887c338599bf8e0a13c23f2535c.ctex"]
+source_file="res://other/39c3 micro game jam flyer for infobeamer.png"
+dest_files=["res://.godot/imported/39c3 micro game jam flyer for infobeamer.png-edb4da8139acdd15a9ce80d165f53cde.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
