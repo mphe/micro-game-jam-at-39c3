@@ -1,11 +1,12 @@
 extends Control
 
-@export var transition_time : float = 1
+@export var transition_time : float
 
 signal transition_done
 
 func _ready() -> void:
 	visible = false
+	$AnimationPlayer.speed_scale=(1.0/transition_time)*5.0
 	$AnimationPlayer.play("RESET")
 
 func transition(type: GameManager.TransitionType) -> void:
@@ -20,8 +21,6 @@ func transition(type: GameManager.TransitionType) -> void:
 			$CenterContainer/CommentLbl.modulate = Color.RED
 		GameManager.TransitionType.START: 
 			$CenterContainer/CommentLbl.text = ""
-	
-	
 	visible = true
 	$AnimationPlayer.play("ready_set_go")
 	"""
