@@ -44,6 +44,9 @@ func _ready() -> void:
 	InputManager.set_is_in_game(false)
 	InputManager.set_is_paused(false)
 	
+	# Connect to Transition Screen
+	%"transition-screen".transition_done.connect(_next_level)
+	
 	_show_title_screen()
 	
 func _start_game() -> void:
@@ -73,14 +76,17 @@ func resume():
 #endregion
 
 #region Level Loading
-func _next_level() -> void:
-	$MenuLayer/GameUI.visible = true
+func _transition_to_level() -> void:
 	%Timer.stop()
-	InputManager.set_is_in_game(true)
-	level += 1
+	$MenuLayer/GameUI.visible = true
 	if current_level_node:
 		current_level_node.queue_free()
 		current_level_node = null
+	%"transition-screen".transition()
+
+func _next_level() -> void:
+	InputManager.set_is_in_game(true)
+	level += 1
 	_show_level()
 
 func _show_level() -> void:
@@ -95,7 +101,7 @@ func _show_level() -> void:
 func _win_level() -> void:
 	print("Win")
 	score = score + 1
-	_next_level()
+	_transition_to_level()
 
 func _lose_level() -> void:
 	print("Lose")
@@ -107,12 +113,11 @@ func _lose_level() -> void:
 	if health == 0:
 		_show_lose_screen()
 	else:
-		_next_level()
+		_transition_to_level()
 
 #endregion
 
 #region Showing Different GUI views 
-
 
 func _show_lose_screen() -> void:
 	InputManager.set_is_in_game(false)
@@ -148,7 +153,7 @@ func _show_settings_screen() -> void:
 	
 func _show_controls() -> void:
 	var controls: Node = load("res://ui/screens/control-screen/control_screen.tscn").instantiate()
-	controls.tree_exited.connect(_next_level)
+	controls.tree_exited.connect(_transition_to_level)
 	menu_layer.add_child(controls)
 
 func _return_to_title_screen() -> void:

@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqjqjog7n71ke"]
+
+[ext_resource type="Script" uid="uid://dy5tbuo0rfsrm" path="res://ui/screens/transition-screen/transition_screen.gd" id="1_4gp8w"]
+[ext_resource type="LabelSettings" uid="uid://84elm3bofhfp" path="res://ui/default-label-settings.tres" id="2_csbsc"]
+
+[node name="transition-screen" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4gp8w")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="ready" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "READY"
+label_settings = ExtResource("2_csbsc")
+
+[node name="readyTimer" type="Timer" parent="CenterContainer/VBoxContainer/ready"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="set" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "SET"
+label_settings = ExtResource("2_csbsc")
+
+[node name="setTimer" type="Timer" parent="CenterContainer/VBoxContainer/set"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="go" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "GO !"
+label_settings = ExtResource("2_csbsc")
+
+[node name="goTimer" type="Timer" parent="CenterContainer/VBoxContainer/go"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="doneTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="CenterContainer/VBoxContainer/ready/readyTimer" to="." method="_on_ready_timer_timeout"]
+[connection signal="timeout" from="CenterContainer/VBoxContainer/set/setTimer" to="." method="_on_set_timer_timeout"]
+[connection signal="timeout" from="CenterContainer/VBoxContainer/go/goTimer" to="." method="_on_go_timer_timeout"]
+[connection signal="timeout" from="doneTimer" to="." method="_on_done_timer_timeout"]
