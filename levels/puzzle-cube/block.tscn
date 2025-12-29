@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp6wa3e3pkv7q"]
+
+[ext_resource type="PackedScene" uid="uid://dt1o3nhdi6kuq" path="res://levels/puzzle-cube/block.blend" id="1_upkwi"]
+[ext_resource type="Script" uid="uid://cd0gcbdmek6bt" path="res://levels/puzzle-cube/block.gd" id="2_p1lf1"]
+
+[sub_resource type="Shader" id="Shader_upkwi"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert_wrap, specular_schlick_ggx, shadows_disabled;
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float clearcoat : hint_range(0.0, 1.0, 0.01);
+uniform float clearcoat_roughness : hint_range(0.0, 1.0, 0.01);
+uniform vec3 black_out_direction1;
+uniform vec3 black_out_direction2;
+
+varying vec3 normal;
+
+void vertex() {
+	normal = NORMAL;
+}
+
+void fragment() {
+	ALBEDO = dot(normal, black_out_direction1) >= 0.99 || dot(normal, black_out_direction2) >= 0.99 ? vec3(0.0) : COLOR.rgb;
+	METALLIC = 0.0;
+	SPECULAR = specular;
+	ROUGHNESS = roughness;
+	CLEARCOAT = clearcoat;
+	CLEARCOAT_ROUGHNESS = clearcoat_roughness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1lf1"]
+render_priority = 0
+shader = SubResource("Shader_upkwi")
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.2
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/black_out_direction1 = Vector3(0, 0, 0)
+shader_parameter/black_out_direction2 = Vector3(0, 0, 0)
+
+[node name="block" instance=ExtResource("1_upkwi")]
+script = ExtResource("2_p1lf1")
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_p1lf1")

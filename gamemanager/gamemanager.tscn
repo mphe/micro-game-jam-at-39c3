@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://hheneshfv1b2" path="res://ui/themes/your_theme.tres" id="3_8qpx4"]
 [ext_resource type="PackedScene" uid="uid://d3ktphdp38cue" path="res://levels/arrow-mashing/arrow_mashing.tscn" id="4_t8gma"]
 [ext_resource type="PackedScene" uid="uid://c7la3ptoomkfq" path="res://levels/word_search/word_search.tscn" id="5_i7ped"]
+[ext_resource type="PackedScene" uid="uid://fx77dou1rb7k" path="res://levels/puzzle-cube/puzzle_cube.tscn" id="6_i7ped"]
 [ext_resource type="Texture2D" uid="uid://77at6m3gk65p" path="res://textures/stopclock.png" id="7_3c0xs"]
 [ext_resource type="PackedScene" uid="uid://cqjqjog7n71ke" path="res://ui/screens/transition-screen/transition-screen.tscn" id="8_y84hv"]
 
@@ -19,7 +20,7 @@ shadow_size = 0
 [node name="Gamemanager" type="Node"]
 process_mode = 3
 script = ExtResource("1_htktm")
-levels = Array[PackedScene]([ExtResource("2_yscq4"), ExtResource("3_3c0xs"), ExtResource("4_t8gma"), ExtResource("5_i7ped")])
+levels = Array[PackedScene]([ExtResource("2_yscq4"), ExtResource("3_3c0xs"), ExtResource("4_t8gma"), ExtResource("5_i7ped"), ExtResource("6_i7ped")])
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
