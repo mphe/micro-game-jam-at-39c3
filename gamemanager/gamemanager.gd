@@ -7,6 +7,7 @@ enum TransitionType {WIN, LOSE, START}
 @export var levels: Array[PackedScene]
 ## Whether the mouse should be captured while in a level
 var is_mouse_captured_in_level: bool = true
+var last_level_idx = -1
 
 @onready var pause_menu: Control = %PauseMenu
 @onready var menu_layer: CanvasLayer = %MenuLayer
@@ -99,7 +100,15 @@ func _next_level() -> void:
 
 func _show_level() -> void:
 	InputManager.set_is_in_game(true)
-	var next_level: Level = levels.pick_random().instantiate()
+	
+	# Choose next random level (prevent picking the same level in a row
+	var next_level_idx = randi_range(0,levels.size()-1)
+	while next_level_idx == last_level_idx:
+		next_level_idx = randi_range(0,levels.size()-1)
+	
+	var next_level: Level = levels[next_level_idx].instantiate()
+	last_level_idx = next_level_idx
+	
 	next_level.win.connect(_win_level)
 	next_level.lose.connect(_lose_level)
 	add_child(next_level)
